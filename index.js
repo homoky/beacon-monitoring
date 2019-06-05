@@ -18,13 +18,12 @@ const firebase = admin.initializeApp({
 const db = firebase.database();
 
 const updateRemoteLog = ({ event, beacon }) => {
+  console.log({ event, beacon });
   db.ref("/" + gatewayName).set({
     distance: beacon.distance,
     status: event,
     timestamp: moment().toString()
   });
-
-  console.log({ event, beacon });
 };
 
 EddystoneBeaconScanner.on("found", function(beacon) {
