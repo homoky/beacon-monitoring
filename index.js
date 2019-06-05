@@ -19,11 +19,13 @@ const db = firebase.database();
 
 const updateRemoteLog = ({ event, beacon }) => {
   console.log({ event, beacon });
-  db.ref("/" + gatewayName).set({
-    distance: beacon.distance,
-    status: event,
-    timestamp: moment().toString()
-  });
+  if (beacon.distance) {
+    db.ref("/" + gatewayName).set({
+      distance: beacon.distance,
+      status: event,
+      timestamp: moment().toString()
+    });
+  }
 };
 
 EddystoneBeaconScanner.on("found", function(beacon) {
