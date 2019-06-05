@@ -18,8 +18,6 @@ const firebase = admin.initializeApp({
 const db = firebase.database();
 
 const updateRemoteLog = ({ event, beacon }) => {
-  console.log(beacon.tlm);
-  console.log(beacon.namespace);
   if (beacon.distance && beacon.instance === "000000000001") {
     db.ref("/" + gatewayName).set({
       distance: beacon.distance,
