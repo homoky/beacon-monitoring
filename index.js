@@ -18,7 +18,9 @@ const firebase = admin.initializeApp({
 const db = firebase.database();
 
 const updateRemoteLog = ({ event, beacon }) => {
-  if (beacon.distance && beacon.namespace === "000000000001") {
+  console.log(beacon.tlm);
+  console.log(beacon.namespace);
+  if (beacon.distance && beacon.tlm.namespace === "000000000001") {
     db.ref("/" + gatewayName).set({
       distance: beacon.distance,
       status: event,
@@ -40,3 +42,5 @@ EddystoneBeaconScanner.on("lost", function(beacon) {
 });
 
 EddystoneBeaconScanner.startScanning(true, 10000);
+
+console.log("Scan started...");
