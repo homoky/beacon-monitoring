@@ -40,4 +40,4 @@ EddystoneBeaconScanner.on("lost", function(beacon) {
   updateRemoteLog({ event: "lost", beacon });
 });
 
-EddystoneBeaconScanner.startScanning(true, 500);
+EddystoneBeaconScanner.startScanning(true, 10000);
